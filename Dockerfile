@@ -30,6 +30,6 @@ COPY --chown=aftermath:aftermath package-lock.json package-lock.json
 
 RUN npm ci
 
-COPY --chown=aftermath:aftermath . .
+COPY --chown=aftermath:aftermath ./ ./
 
-CMD npm run start
+CMD npm run start -- input

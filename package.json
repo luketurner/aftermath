@@ -2,9 +2,9 @@
   "name": "blog-aftermath",
   "version": "0.0.0",
   "description": "",
-  "main": "index.mjs",
+  "main": "src/index.mjs",
   "scripts": {
-    "start": "node index.mjs"
+    "start": "node src/index.mjs"
   },
   "repository": {
     "type": "git",
