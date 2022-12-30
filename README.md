@@ -33,7 +33,7 @@ The `aftermath` tool is intended to be run in [Docker](https://www.docker.com/) 
 docker build aftermath -t aftermath
 ```
 
-Building the image is slow, but we only have to do it once.
+If you want to edit configuration settings, you'll find them in `aftermath/src/config.mjs`, after which you'll need to rebuild the image.
 
 Now we can run an `aftermath` container:
 
