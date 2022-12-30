@@ -32,4 +32,6 @@ RUN npm ci
 
 COPY --chown=aftermath:aftermath ./ ./
 
+RUN mkdir input
+
 CMD npm run start -- input
