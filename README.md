@@ -98,7 +98,7 @@ I'm moving towards having _all_ of my development environments Dockerized, actua
 
 `aftermath` isn't suitable for use with Hugo's development server.
 
-In a development setting, it's preferable to perform the transfomrations client-side (in the browser), e.g. with:
+In a development setting, it's preferable to do the transformation client-side (in the browser), e.g. with:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
