@@ -24,7 +24,7 @@ We can "install" `aftermath` by adding it as a submodule in our blog's Git repos
 
 ```bash
 cd projects/blog
-git submodule add https://github.com/luketurner/blog-aftermath.git aftermath
+git submodule add https://github.com/luketurner/aftermath.git aftermath
 ```
 
 The `aftermath` tool is intended to be run in [Docker](https://www.docker.com/) (or equivalent container builder and runtime). Once we've cloned the repo, we can build an `aftermath` image:

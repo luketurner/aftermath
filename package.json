@@ -1,5 +1,5 @@
 {
-  "name": "blog-aftermath",
+  "name": "aftermath",
   "version": "0.0.0",
   "description": "",
   "main": "src/index.mjs",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luketurner/blog-aftermath.git"
+    "url": "git+https://github.com/luketurner/aftermath.git"
   },
   "author": "Luke Turner",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/luketurner/blog-aftermath/issues"
+    "url": "https://github.com/luketurner/aftermath/issues"
   },
-  "homepage": "https://github.com/luketurner/blog-aftermath#readme",
+  "homepage": "https://github.com/luketurner/aftermath#readme",
   "dependencies": {
     "@mermaid-js/mermaid-cli": "^9.2.2",
     "cheerio": "^1.0.0-rc.12",
