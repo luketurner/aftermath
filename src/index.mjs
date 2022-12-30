@@ -3,6 +3,7 @@ import path from 'path';
 import * as cheerio from 'cheerio';
 import { transformMermaid } from './mermaid.mjs';
 import { transformKatex } from './katex.mjs';
+import { transformD2 } from './d2.mjs';
 
 const INPUT_DIR = process.argv[2];
 if (!INPUT_DIR) {
@@ -29,6 +30,7 @@ function transformFile(file) {
 
     transformMermaid(doc);
     transformKatex(doc);
+    transformD2(doc);
 
     fs.writeFileSync(file, doc.html(), { encoding: 'utf8' });
   } catch (e) {

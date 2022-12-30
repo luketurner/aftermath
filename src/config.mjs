@@ -24,5 +24,12 @@ export const config = {
     selector: '.mermaid', // should match w/ what Mermaid uses browser-side
     background: 'transparent'
   },
+  d2: {
+    selector: '.language-d2',
+    sketchy: true,
+    padding: 10,
+    transparentBackground: true,
+    theme: 100,
+  },
   postContentSelector: '.post-content',
 };

@@ -6,6 +6,7 @@ Given a directory of HTML files, `aftermath` will apply the following transforma
 
 1. Replace [mermaid](https://mermaid.js.org/#/) code blocks with compiled SVGs.
 2. Replace [KaTeX](https://katex.org/) syntax with compiled SVGs.
+3. Replace [D2](https://d2lang.com) code blocks with compiled SVGs.
 
 Because `aftermath` is quite slow for decent sized blogs, I recommend using it for production builds only, where minimal Javascript is desirable. During development, client-side Javascript rendering is probably preferable.
 
