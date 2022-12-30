@@ -21,6 +21,7 @@ export const config = {
     ]
   },
   mermaid: {
+    selector: '.mermaid', // should match w/ what Mermaid uses browser-side
     background: 'transparent'
   },
   postContentSelector: '.post-content',

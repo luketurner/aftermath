@@ -24,7 +24,7 @@ function renderMermaid(diagram) {
 }
 
 export function transformMermaid($) {
-  $(`${config.postContentSelector} .mermaid`).each((i, el) => {
+  $(`${config.postContentSelector} ${config.mermaid.selector}`).each((i, el) => {
     const $el = $(el);
     const diagram = $el.text();
     console.log("rendering mermaid diagram...");
