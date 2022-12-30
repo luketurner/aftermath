@@ -61,3 +61,53 @@ set -e
 hugo
 docker run --mount "type=bind,source=$(pwd)/docs,target=/home/aftermath/input" aftermath
 ```
+
+## FAQ
+
+### Is this production ready? Should I use it for my blog?
+
+Although `aftermath` is open-source, it's ultimately a personal project designed for my specific needs, published without any guarantees of behavior. If you want to use `aftermath` for your blog, I recommend forking it and modifying the code as needed to suit your unique needs.
+
+### Why do I need to run a separate tool after `hugo`?
+
+Although Hugo configuration and theming is powerful, it's not possible to use custom programs during execution. Something like `aftermath` could be entirely implemented in a Hugo theme if there was some way to call external programs inside a theme (e.g. [an `exec` shortcode](https://github.com/gohugoio/hugo/issues/796)). Or plugins, external helpers, or something. The issue, though, is security: something like an `exec` shortcode could be easily abused by a malicious theme.
+
+A few related Hugo issues:
+
+- https://github.com/gohugoio/hugo/issues/7921
+- https://github.com/gohugoio/hugo/issues/7765
+- https://github.com/gohugoio/hugo/issues/796
+
+Because of the above, Hugo is limited in what functionality you can add without forking the [Hugo codebase](https://github.com/gohugoio/hugo). There are also [Hugo modules](https://gohugo.io/hugo-modules/) but I don't really understand those yet.
+
+(Why didn't I fork the codebase? Maintaining an up-to-date fork of `hugo` is more effort than I want to put in, but I also don't want to get stuck with an out-of-date fork either! I prefer to program against the generated HTML, which should be a consistent interface even for new `hugo` versions.)
+
+### Why did you use Node?
+
+The two main third-party dependencies -- `katex` and `mermaid-cli` -- are both installed with `npm`. KaTeX even has a Javascript API. So Node felt like the natural choice.
+
+Also, I'm familiar with it, so that helps.
+
+### Why is this Dockerized?
+
+`aftermath` is a simple project, but it has a fair number of dependencies, including the Mermaid CLI which pulls in a full headless Chrome. With Docker, the whole development environment becomes self-contained and consistent across systems.
+
+I'm moving towards having _all_ of my development environments Dockerized, actually. And since `aftermath` isn't really a polished tool, I haven't taken the time to support a non-Dockerized version. (You _can_ still run it without Docker, of course, it's just not tested/documented.)
+
+### How can I support `hugo serve`?
+
+`aftermath` isn't suitable for use with Hugo's development server.
+
+In a development setting, it's preferable to perform the transfomrations client-side (in the browser), e.g. with:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs" onload="mermaid.initialize({ startOnLoad: true });"></script>
+```
+
+I've tried to write `aftermath` so the transformations it performs are exactly the same as the ones done dynamically by the above client-side JS.
+
+Note that `d2` doesn't have a client-side transformation option that I'm aware of, so `d2` diagrams will just render as source code blocks when using `hugo serve`.
